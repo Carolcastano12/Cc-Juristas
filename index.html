@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CC Juristas y Asociados | Abogada Carol Castaño</title>
+  <meta name="description" content="Firma legal con presencia en Colombia y EE.UU. Derecho civil, familia, migratorio y expansión de productos latinoamericanos al mercado estadounidense." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #b8924a; --gold-light: #e8d5b0; --cream: #faf7f2;
+      --ink: #1a1614; --muted: #6b6460; --border: #e0d8cf;
+      --white: #ffffff; --navy: #1a2744;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(250,247,242,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 1rem 5vw; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-logo small { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+    .nav-btn { background: var(--gold); color: var(--white); border: none; border-radius: 2px; padding: 0.5rem 1.2rem; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 500; cursor: pointer; text-decoration: none; }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, var(--cream) 60%, var(--gold-light) 100%); padding: 4rem 5vw 3.5rem; border-bottom: 1px solid var(--border); }
+    .hero-inner { max-width: 900px; margin: 0 auto; }
+    .flag-row { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .flag-tag { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 0.22rem 0.65rem; font-size: 0.7rem; color: var(--muted); }
+    .eyebrow { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
+    .eyebrow::before { content: ''; display: inline-block; width: 22px; height: 1px; background: var(--gold); }
+    h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 600; line-height: 1.12; margin-bottom: 1rem; }
+    h1 em { font-style: italic; color: var(--gold); }
+    .hero-desc { color: var(--muted); font-size: 0.97rem; line-height: 1.82; margin-bottom: 1.2rem; max-width: 500px; }
+    .price-note { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--gold); padding: 0.5rem 0.9rem; border-radius: 2px; font-size: 0.82rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .btn-group { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .btn-primary { background: var(--gold); color: var(--white); border: none; border-radius: 2px; padding: 0.85rem 1.8rem; font-family: 'DM Sans', sans-serif; font-size: 0.87rem; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s; }
+    .btn-primary:hover { background: #9e7a38; }
+    .btn-secondary { background: transparent; color: var(--ink); border: 1.5px solid var(--border); border-radius: 2px; padding: 0.85rem 1.8rem; font-family: 'DM Sans', sans-serif; font-size: 0.87rem; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; transition: border-color 0.2s; }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* TRUST BAR */
+    .trust-bar { background: var(--ink); padding: 0.9rem 5vw; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    .trust-item { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-light); opacity: 0.65; }
+
+    /* SECTIONS */
+    section { padding: 4rem 5vw; }
+    .section-inner { max-width: 900px; margin: 0 auto; }
+    .section-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.7rem, 3.5vw, 2.2rem); font-weight: 600; line-height: 1.2; margin-bottom: 0.8rem; }
+    .divider { width: 36px; height: 2px; background: var(--gold); margin: 1rem 0 2rem; }
+    .section-sub { color: var(--muted); font-size: 0.93rem; line-height: 1.82; margin-bottom: 2rem; }
+
+    /* TABS */
+    .tab-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .tab-btn { background: transparent; color: var(--muted); border: 1.5px solid var(--border); border-radius: 2px; padding: 0.45rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.77rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+    .tab-btn.active, .tab-btn:hover { background: var(--gold); color: var(--white); border-color: var(--gold); }
+
+    /* CATEGORIES */
+    .cat-block { margin-bottom: 2.5rem; display: none; }
+    .cat-block.visible { display: block; }
+    .cat-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem; padding-bottom: 0.7rem; border-bottom: 1.5px solid var(--border); }
+    .cat-icon { font-size: 1.4rem; }
+    .cat-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; }
+    .cat-desc { font-size: 0.82rem; color: var(--muted); margin-top: 0.1rem; }
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem; }
+    .card { border: 1px solid var(--border); padding: 1.3rem; border-radius: 3px; background: var(--cream); transition: border-color 0.2s, transform 0.15s; }
+    .card:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .card-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.45rem; }
+    .card-text { color: var(--muted); font-size: 0.82rem; line-height: 1.72; }
+
+    /* USA SECTION */
+    .usa-section { background: var(--navy); padding: 4rem 5vw; }
+    .usa-inner { max-width: 900px; margin: 0 auto; }
+    .label-light { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #6c8cbf; margin-bottom: 0.6rem; }
+    .h2-light { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.7rem, 3.5vw, 2.2rem); font-weight: 600; line-height: 1.2; margin-bottom: 0.8rem; color: var(--white); }
+    .sub-light { color: rgba(255,255,255,0.45); font-size: 0.93rem; line-height: 1.82; margin-bottom: 2rem; }
+    .usa-proof { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-left: 3px solid var(--gold); padding: 1.3rem 1.5rem; border-radius: 3px; margin-bottom: 2rem; }
+    .usa-proof-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .usa-proof-text { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 0.5rem; }
+    .usa-proof-sub { font-size: 0.75rem; color: rgba(255,255,255,0.38); }
+    .usa-steps { margin-bottom: 2rem; }
+    .usa-step { display: flex; gap: 0.9rem; align-items: flex-start; margin-bottom: 1.1rem; }
+    .step-num-circle { width: 26px; height: 26px; border-radius: 50%; background: rgba(184,146,74,0.18); border: 1px solid rgba(184,146,74,0.35); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .usa-step h4 { font-size: 0.9rem; color: var(--gold-light); margin-bottom: 0.2rem; font-weight: 500; }
+    .usa-step p { font-size: 0.82rem; color: rgba(255,255,255,0.4); line-height: 1.65; }
+    .usa-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.9rem; margin-bottom: 1.5rem; }
+    .usa-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 3px; padding: 1rem; text-align: center; }
+    .usa-card-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+    .usa-card h4 { font-size: 0.82rem; color: var(--white); font-weight: 500; margin-bottom: 0.2rem; }
+    .usa-card p { font-size: 0.72rem; color: rgba(255,255,255,0.32); line-height: 1.5; }
+    .country-label { font-size: 0.7rem; color: rgba(255,255,255,0.32); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.6rem; }
+    .country-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+    .country-tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 0.28rem 0.7rem; font-size: 0.74rem; color: rgba(255,255,255,0.5); }
+
+    /* PROCESO */
+    .proceso-section { background: #111; padding: 4rem 5vw; }
+    .proceso-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
+    .proceso-step .step-n { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 600; color: rgba(184,146,74,0.18); line-height: 1; margin-bottom: 0.6rem; }
+    .proceso-step h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--gold-light); margin-bottom: 0.4rem; }
+    .proceso-step p { font-size: 0.82rem; color: rgba(255,255,255,0.38); line-height: 1.75; }
+    .step-price { display: inline-block; margin-top: 0.6rem; background: rgba(184,146,74,0.15); border: 1px solid rgba(184,146,74,0.3); color: var(--gold-light); font-size: 0.74rem; padding: 0.25rem 0.65rem; border-radius: 2px; }
+
+    /* FORMULARIO */
+    .form-note { background: #fffbf5; border: 1px solid var(--gold-light); border-left: 3px solid var(--gold); padding: 0.85rem 1rem; border-radius: 2px; font-size: 0.81rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-full { grid-column: 1 / -1; }
+    label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); }
+    input, select, textarea { padding: 0.78rem 0.9rem; border: 1.5px solid var(--border); border-radius: 2px; background: var(--cream); font-family: 'DM Sans', sans-serif; font-size: 0.88rem; color: var(--ink); outline: none; transition: border-color 0.2s; width: 100%; }
+    input:focus, select:focus, textarea:focus { border-color: var(--gold); }
+    textarea { resize: vertical; min-height: 100px; }
+    .form-submit { background: var(--gold); color: var(--white); border: none; border-radius: 2px; padding: 1rem; width: 100%; font-family: 'DM Sans', sans-serif; font-size: 0.93rem; font-weight: 500; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem; }
+    .form-submit:hover { background: #9e7a38; }
+    .form-links { font-size: 0.76rem; color: var(--muted); text-align: center; margin-top: 0.7rem; }
+    .form-links a { color: var(--gold); text-decoration: none; }
+
+    /* TESTIMONIOS */
+    .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
+    .test-card { background: var(--white); border: 1px solid var(--border); border-radius: 3px; padding: 1.5rem; }
+    .stars { color: var(--gold); font-size: 0.8rem; margin-bottom: 0.7rem; }
+    .test-card blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; line-height: 1.65; color: var(--ink); margin-bottom: 1rem; }
+    .test-author { font-size: 0.75rem; font-weight: 500; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
+    .test-country { font-size: 0.72rem; color: var(--gold); margin-top: 0.2rem; }
+
+    /* FOOTER */
+    footer { background: var(--ink); padding: 2.5rem 5vw; text-align: center; }
+    .footer-firm { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--white); margin-bottom: 0.2rem; }
+    .footer-firm span { color: var(--gold); }
+    .footer-sub { font-size: 0.65rem; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 0.4rem; }
+    .footer-loc { font-size: 0.73rem; color: rgba(255,255,255,0.24); margin-bottom: 1.2rem; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .footer-links a { font-size: 0.73rem; color: var(--gold-light); text-decoration: none; opacity: 0.55; }
+    .footer-links a:hover { opacity: 1; }
+    .footer-copy { font-size: 0.7rem; color: rgba(255,255,255,0.18); }
+
+    /* WA FLOAT */
+    .wa-float { position: fixed; bottom: 1.4rem; right: 1.4rem; z-index: 200; background: #25d366; color: var(--white); width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; text-decoration: none; box-shadow: 0 4px 16px rgba(37,211,102,0.45); }
+    .wa-float:hover { transform: scale(1.08); }
+
+    @media (max-width: 640px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-full { grid-column: 1; }
+      nav .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    CC Juristas <span>&</span> Asociados
+    <small>Abogada Carol Castaño · Colombia & Estados Unidos</small>
+  </a>
+  <a href="#formulario" class="nav-btn">Estudia mi caso →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="flag-row">
+      <span class="flag-tag">🇨🇴 Colombia</span>
+      <span class="flag-tag">🇺🇸 Estados Unidos</span>
+      <span class="flag-tag">🌎 Latinoamérica</span>
+    </div>
+    <div class="eyebrow">Derecho Civil · Familia · Migratorio · Expansión USA</div>
+    <h1>Tu firma legal con<br>puerta de entrada a<br><em>Estados Unidos</em></h1>
+    <p class="hero-desc">Donde estés en Colombia o el mundo — resolvemos tus asuntos legales en Colombia y abrimos las puertas del mercado americano para tu producto o negocio. Una sola firma, dos países, resultados reales.</p>
+    <div class="price-note">💬 <span>Consulta inicial: <strong>$100.000 COP</strong> · Diagnóstico integral</span></div>
+    <div class="btn-group">
+      <a href="#formulario" class="btn-primary">Estudiar mi caso →</a>
+      <a href="https://wa.me/573001350609" target="_blank" class="btn-secondary">WhatsApp directo</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <span class="trust-item">Familia</span>
+  <span class="trust-item">Civil</span>
+  <span class="trust-item">Contratos</span>
+  <span class="trust-item">Migratorio Colombia</span>
+  <span class="trust-item">Colombianos en Exterior</span>
+  <span class="trust-item">Expansión USA</span>
+</div>
+
+<!-- SERVICIOS -->
+<section id="servicios" style="background: var(--white);">
+  <div class="section-inner">
+    <div class="section-label">Servicios legales</div>
+    <h2>¿Qué área necesitas?</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Selecciona una categoría o explora todos nuestros servicios.</p>
+
+    <div class="tab-row">
+      <button class="tab-btn active" onclick="filterCat('todos', this)">Todos</button>
+      <button class="tab-btn" onclick="filterCat('familia', this)">👨‍👧 Familia</button>
+      <button class="tab-btn" onclick="filterCat('civil', this)">⚖️ Civil</button>
+      <button class="tab-btn" onclick="filterCat('contratos', this)">📑 Contratos</button>
+      <button class="tab-btn" onclick="filterCat('migratorio', this)">✈️ Migratorio</button>
+      <button class="tab-btn" onclick="filterCat('exterior', this)">🌍 Colombianos en Exterior</button>
+    </div>
+
+    <!-- FAMILIA -->
+    <div class="cat-block visible" data-cat="familia">
+      <div class="cat-header">
+        <span class="cat-icon">👨‍👧</span>
+        <div>
+          <div class="cat-title">Procesos de Familia</div>
+          <div class="cat-desc">Protegemos tus derechos y los de tu familia en los momentos más difíciles</div>
+        </div>
+      </div>
+      <div class="cards-grid">
+        <div class="card"><div class="card-title">Custodia y cuidado personal</div><div class="card-text">Defiendo tus derechos y los de tus hijos. Custodia, visitas y regulación del tiempo compartido.</div></div>
+        <div class="card"><div class="card-title">Cuota alimentaria</div><div class="card-text">Fijación, aumento o disminución de alimentos. Cuando la situación cambia, la cuota se ajusta.</div></div>
+        <div class="card"><div class="card-title">Divorcios</div><div class="card-text">De mutuo acuerdo o contencioso. Incluye liquidación de sociedad conyugal y separación de bienes.</div></div>
+        <div class="card"><div class="card-title">Filiación y paternidad</div><div class="card-text">Reconocimiento e impugnación de paternidad. Procesos de sucesiones y herencias.</div></div>
+      </div>
+    </div>
+
+    <!-- CIVIL -->
+    <div class="cat-block visible" data-cat="civil">
+      <div class="cat-header">
+        <span class="cat-icon">⚖️</span>
+        <div>
+          <div class="cat-title">Procesos Civiles</div>
+          <div class="cat-desc">Recupera lo que es tuyo y protege tus intereses con estrategia legal</div>
+        </div>
+      </div>
+      <div class="cards-grid">
+        <div class="card"><div class="card-title">Procesos ejecutivos</div><div class="card-text">¿Alguien te debe y no paga? Recupero tu dinero por la vía legal — mínima, menor y mayor cuantía.</div></div>
+        <div class="card"><div class="card-title">Recuperación de cartera</div><div class="card-text">Estrategia integral desde gestión prejudicial hasta proceso ejecutivo completo.</div></div>
+        <div class="card"><div class="card-title">Asesorías preventivas</div><div class="card-text">El mejor problema legal es el que se evita. Toma decisiones con seguridad jurídica.</div></div>
+      </div>
+    </div>
+
+    <!-- CONTRATOS -->
+    <div class="cat-block visible" data-cat="contratos">
+      <div class="cat-header">
+        <span class="cat-icon">📑</span>
+        <div>
+          <div class="cat-title">Contratos</div>
+          <div class="cat-desc">Cualquier tipo de contrato — redactado para protegerte, no solo para cumplir</div>
+        </div>
+      </div>
+      <div class="cards-grid">
+        <div class="card"><div class="card-title">Contratos civiles</div><div class="card-text">Compraventa, arrendamiento, préstamo, comodato y todo tipo de acuerdo entre particulares.</div></div>
+        <div class="card"><div class="card-title">Contratos comerciales</div><div class="card-text">Acuerdos entre empresas, distribución, franquicias, prestación de servicios.</div></div>
+        <div class="card"><div class="card-title">Contratos laborales</div><div class="card-text">Redacción, revisión y asesoría en contratos de trabajo y vinculación.</div></div>
+        <div class="card"><div class="card-title">Acuerdos de confidencialidad</div><div class="card-text">NDAs y acuerdos de no competencia para proteger tu información y negocio.</div></div>
+      </div>
+    </div>
+
+    <!-- MIGRATORIO -->
+    <div class="cat-block visible" data-cat="migratorio">
+      <div class="cat-header">
+        <span class="cat-icon">✈️</span>
+        <div>
+          <div class="cat-title">Derecho Migratorio Colombiano</div>
+          <div class="cat-desc">Para extranjeros que quieren vivir o permanecer legalmente en Colombia</div>
+        </div>
+      </div>
+      <div class="cards-grid">
+        <div class="card"><div class="card-title">Visas colombianas</div><div class="card-text">Digital nomad, cónyuge, pensionado, trabajo, inversión. Proceso completo.</div></div>
+        <div class="card"><div class="card-title">Permisos de residencia</div><div class="card-text">Solicitud de Permiso Especial de Permanencia (PEP) y regularización migratoria.</div></div>
+        <div class="card"><div class="card-title">Trámites ante Migración Colombia</div><div class="card-text">Salvoconductos, cédulas de extranjería, prórrogas y más.</div></div>
+        <div class="card"><div class="card-title">Asesoría Colombia–EE.UU.</div><div class="card-text">Procesos que involucran ambos países. Experiencia práctica en los dos sistemas.</div></div>
+      </div>
+    </div>
+
+    <!-- EXTERIOR -->
+    <div class="cat-block visible" data-cat="exterior">
+      <div class="cat-header">
+        <span class="cat-icon">🌍</span>
+        <div>
+          <div class="cat-title">Trámites en Colombia para Colombianos en el Exterior</div>
+          <div class="cat-desc">Estás afuera pero necesitas resolver algo en Colombia — lo hacemos por ti</div>
+        </div>
+      </div>
+      <div class="cards-grid">
+        <div class="card"><div class="card-title">Poderes notariales</div><div class="card-text">Redacción y trámite de poderes para que un representante actúe en tu nombre en Colombia.</div></div>
+        <div class="card"><div class="card-title">Procesos judiciales a distancia</div><div class="card-text">Representación legal en procesos civiles, familia o ejecutivos sin que tengas que viajar.</div></div>
+        <div class="card"><div class="card-title">Trámites inmobiliarios</div><div class="card-text">Venta, compra, arrendamiento o administración de propiedades en Colombia desde el exterior.</div></div>
+        <div class="card"><div class="card-title">Sucesiones y herencias</div><div class="card-text">Gestión de procesos sucesorales cuando el heredero o causante está fuera del país.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USA -->
+<section class="usa-section" id="expansion">
+  <div class="usa-inner">
+    <div class="label-light">Expansión al mercado estadounidense</div>
+    <div class="h2-light">Tu producto en EE.UU.<br>Nosotros abrimos la puerta.</div>
+    <div class="divider"></div>
+    <p class="sub-light">¿Tienes un producto en Colombia, Ecuador, México o cualquier país de Latinoamérica y quieres entrar al mercado americano? Gestionamos todo — desde los trámites hasta conectarte con los compradores correctos. Precio según el proyecto — contáctanos para una evaluación.</p>
+    <div class="usa-proof">
+      <div class="usa-proof-label">✓ Caso real · Resultado comprobado</div>
+      <div class="usa-proof-text">"Logramos ingresar tostones de plátano de un productor ecuatoriano a las estanterías de Costco en Estados Unidos — gestionando trámites, contactos y distribución desde cero."</div>
+      <div class="usa-proof-sub">Cliente de Ecuador · Producto alimenticio · Costco USA ✓</div>
+    </div>
+    <div class="usa-steps">
+      <div class="usa-step"><div class="step-num-circle">1</div><div><h4>Diagnóstico de tu producto</h4><p>Evaluamos tu producto, su potencial en EE.UU. y los requisitos legales y regulatorios.</p></div></div>
+      <div class="usa-step"><div class="step-num-circle">2</div><div><h4>Trámites y licencias</h4><p>Gestionamos permisos, registros FDA, etiquetado y toda la documentación necesaria.</p></div></div>
+      <div class="usa-step"><div class="step-num-circle">3</div><div><h4>Conexión con compradores</h4><p>Activamos nuestra red: distribuidores, retailers, cadenas y brokers en el mercado americano.</p></div></div>
+      <div class="usa-step"><div class="step-num-circle">4</div><div><h4>Acompañamiento completo</h4><p>Te acompañamos hasta que tu producto esté físicamente en el mercado americano.</p></div></div>
+    </div>
+    <div class="usa-grid">
+      <div class="usa-card"><div class="usa-card-icon">🏬</div><h4>Cadenas retail</h4><p>Costco, Walmart, Target, Whole Foods</p></div>
+      <div class="usa-card"><div class="usa-card-icon">🚚</div><h4>Distribuidores</h4><p>Red local y nacional en EE.UU.</p></div>
+      <div class="usa-card"><div class="usa-card-icon">🤝</div><h4>Brokers</h4><p>Conexión directa con compradores</p></div>
+      <div class="usa-card"><div class="usa-card-icon">📋</div><h4>Trámites completos</h4><p>FDA, importación, etiquetado</p></div>
+    </div>
+    <div class="country-label">Atendemos clientes de</div>
+    <div class="country-tags">
+      <span class="country-tag">🇨🇴 Colombia</span>
+      <span class="country-tag">🇪🇨 Ecuador</span>
+      <span class="country-tag">🇲🇽 México</span>
+      <span class="country-tag">🇵🇪 Perú</span>
+      <span class="country-tag">🇻🇪 Venezuela</span>
+      <span class="country-tag">🌎 Más países</span>
+    </div>
+    <a href="#formulario" class="btn-primary" style="display:block;text-align:center;margin-top:1.8rem;">Quiero llevar mi producto a EE.UU. →</a>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="proceso-section" id="proceso">
+  <div class="section-inner">
+    <div class="section-label">Cómo trabajamos</div>
+    <h2 style="color:var(--white)">Claro y transparente<br>desde el primer momento</h2>
+    <div class="divider"></div>
+    <div class="proceso-grid">
+      <div class="proceso-step"><div class="step-n">01</div><h3>Envías tu caso</h3><p>Completas el formulario. No necesitas saber los términos legales — cuéntanos con tus palabras.</p></div>
+      <div class="proceso-step"><div class="step-n">02</div><h3>Consulta inicial</h3><p>Videollamada o reunión presencial para profundizar en tu situación.</p><span class="step-price">$100.000 COP</span></div>
+      <div class="proceso-step"><div class="step-n">03</div><h3>Diagnóstico integral</h3><p>Análisis completo: riesgos reales, opciones y estrategia recomendada.</p></div>
+      <div class="proceso-step"><div class="step-n">04</div><h3>Asesoría y ejecución</h3><p>Trabajamos juntos con seguimiento constante. Siempre sabes en qué etapa estás.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULARIO -->
+<section id="formulario">
+  <div class="section-inner">
+    <div class="section-label">Estudio de caso</div>
+    <h2>Cuéntanos tu situación<br>y la analizamos juntos</h2>
+    <div class="divider"></div>
+    <div class="form-note">📋 <strong>¿Por qué este formulario?</strong> Para darte una asesoría realmente acertada necesitamos entender tu caso antes de la consulta. Así cada minuto contigo es útil y enfocado en soluciones reales.</div>
+    <form name="caso-cliente" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/gracias.html">
+      <input type="hidden" name="form-name" value="caso-cliente" />
+      <input type="hidden" name="_to" value="asesoria@ccjuristasyasociados.com" />
+      <p style="display:none"><input name="bot-field" /></p>
+      <div class="form-grid">
+      <div class="form-group"><label>Nombre completo</label><input type="text" name="nombre" placeholder="Tu nombre y apellidos" required /></div>
+      <div class="form-group"><label>País</label><input type="text" name="pais" placeholder="¿Desde qué país nos escribes?" /></div>
+      <div class="form-group"><label>WhatsApp</label><input type="tel" name="whatsapp" placeholder="+57 300 135 0609" required /></div>
+      <div class="form-group"><label>Correo electrónico</label><input type="email" name="email" placeholder="tu@correo.com" required /></div>
+      <div class="form-group form-full">
+        <label>¿Qué necesitas?</label>
+        <select name="servicio" required>
+          <option value="">Selecciona el tipo de asunto</option>
+          <optgroup label="👨‍👧 Familia">
+            <option>Custodia / cuidado personal</option>
+            <option>Cuota alimentaria</option>
+            <option>Divorcio</option>
+            <option>Filiación / paternidad</option>
+          </optgroup>
+          <optgroup label="⚖️ Civil">
+            <option>Proceso ejecutivo / cobro de deuda</option>
+            <option>Recuperación de cartera</option>
+            <option>Asesoría preventiva</option>
+          </optgroup>
+          <optgroup label="📑 Contratos">
+            <option>Contrato civil o comercial</option>
+            <option>Contrato laboral</option>
+            <option>Acuerdo de confidencialidad</option>
+          </optgroup>
+          <optgroup label="✈️ Migratorio Colombia">
+            <option>Visa colombiana para extranjero</option>
+            <option>Permiso de residencia / PEP</option>
+            <option>Trámite ante Migración Colombia</option>
+          </optgroup>
+          <optgroup label="🌍 Colombianos en el Exterior">
+            <option>Poder notarial desde el exterior</option>
+            <option>Proceso judicial a distancia</option>
+            <option>Trámite inmobiliario en Colombia</option>
+            <option>Sucesión o herencia</option>
+          </optgroup>
+          <optgroup label="🇺🇸 Expansión USA">
+            <option>Quiero llevar mi producto a EE.UU.</option>
+            <option>Trámites / permisos para exportar</option>
+            <option>Busco distribuidores en EE.UU.</option>
+          </optgroup>
+          <option>No estoy segura — necesito orientación</option>
+        </select>
+      </div>
+      <div class="form-group form-full"><label>Describe tu situación</label><textarea name="situacion" placeholder="Cuéntanos qué está pasando y qué necesitas lograr. No te preocupes por los términos legales — escribe con tus palabras..."></textarea></div>
+      <div class="form-group form-full"><label>¿Hay alguna urgencia o fecha límite?</label><input type="text" name="urgencia" placeholder="Ej: audiencia el 15 de julio, contrato vence pronto..." /></div>
+      <div class="form-full">
+        <button type="submit" class="form-submit">Enviar mi caso para estudio →</button>
+        <p class="form-links">También por <a href="https://wa.me/573001350609">WhatsApp</a> o al <a href="tel:+13465418165">+1 346-541-8165</a></p>
+      </div>
+    </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section style="background: var(--white);" id="testimonios">
+  <div class="section-inner">
+    <div class="section-label">Resultados reales</div>
+    <h2>Clientes que confiaron<br>en nosotros</h2>
+    <div class="divider"></div>
+    <div class="test-grid">
+      <div class="test-card"><div class="stars">★★★★★</div><blockquote>"Pensé que nunca podría ver a mi hijo con normalidad. Gracias a su gestión, tenemos un acuerdo de custodia justo."</blockquote><div class="test-author">L. Gómez · Custodia</div><div class="test-country">🇨🇴 Cali, Colombia</div></div>
+      <div class="test-card"><div class="stars">★★★★★</div><blockquote>"Me ayudaron a meter mi producto al mercado americano desde cero. No solo los trámites — me consiguieron el contacto correcto."</blockquote><div class="test-author">R. Torres · Expansión USA</div><div class="test-country">🇪🇨 Ecuador</div></div>
+      <div class="test-card"><div class="stars">★★★★★</div><blockquote>"Recuperé una deuda importante que tenía meses sin pagar. Eficiente y siempre me mantuvo informado del proceso."</blockquote><div class="test-author">C. Morales · Proceso ejecutivo</div><div class="test-country">🇨🇴 Colombia</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-firm">CC Juristas <span>&</span> Asociados</div>
+  <div class="footer-sub">Abogada Carol Castaño</div>
+  <div class="footer-loc">🌎 Cobertura nacional e internacional · Colombia y Estados Unidos</div>
+  <div class="footer-links">
+    <a href="mailto:carol.castano@ccjuristasyasociados.com">carol.castano@ccjuristasyasociados.com</a>
+    <a href="tel:+573001350609">+57 300 135 0609</a>
+    <a href="tel:+13465418165">+1 346-541-8165</a>
+  </div>
+  <div class="footer-links">
+    <a href="https://www.facebook.com/share/191Wgs3FR1/?mibextid=wwXIfr">Facebook</a>
+    <a href="https://www.instagram.com/ccjuristasyasociados?igsh=a2NqcGcyYmt5Ync4">Instagram</a>
+    <a href="https://www.linkedin.com/in/carol-castaño-987ba9222?utm_source=share_via&utm_content=profile&utm_medium=member_ios">LinkedIn</a>
+    <a href="https://wa.me/573001350609">WhatsApp</a>
+  </div>
+  <div class="footer-copy">© 2025 · CC Juristas y Asociados · Todos los derechos reservados</div>
+</footer>
+
+<a href="https://wa.me/573001350609" target="_blank" class="wa-float">💬</a>
+
+<script>
+  function filterCat(cat, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.cat-block').forEach(block => {
+      if (cat === 'todos' || block.dataset.cat === cat) {
+        block.classList.add('visible');
+      } else {
+        block.classList.remove('visible');
+      }
+    });
+  }
+</script>
+</body>
+</html>
+<!-- GRACIAS PAGE handled via hash -->
