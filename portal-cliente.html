@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Portal del Cliente · CC Juristas y Asociados</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#b8924a;--gold-l:#e8d5b0;--cream:#faf7f2;
+  --ink:#1a1614;--muted:#6b6460;--border:#e0d8cf;--white:#fff;
+  --green:#16a34a;--green-bg:#f0fdf4;--green-b:#bbf7d0;
+  --yellow:#b45309;--yellow-bg:#fffbeb;--yellow-b:#fcd34d;
+  --red:#be123c;--red-bg:#fff1f2;--red-b:#fecaca;
+  --navy:#1a2744;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh}
+
+/* ── LOGIN ── */
+.login-page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;background:linear-gradient(160deg,var(--cream) 60%,var(--gold-l) 100%)}
+.login-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--ink);text-align:center;margin-bottom:.3rem}
+.login-logo span{color:var(--gold)}
+.login-sub{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:2.5rem}
+.login-card{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:2.2rem;width:100%;max-width:380px;box-shadow:0 4px 24px rgba(0,0,0,.08)}
+.login-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;margin-bottom:.4rem}
+.login-desc{font-size:.83rem;color:var(--muted);margin-bottom:1.8rem;line-height:1.6}
+.form-group{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1.1rem}
+.form-group label{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.form-group input{padding:.8rem 1rem;border:1.5px solid var(--border);border-radius:3px;font-family:'DM Sans',sans-serif;font-size:.95rem;color:var(--ink);background:var(--cream);outline:none;transition:border-color .2s;letter-spacing:.04em}
+.form-group input:focus{border-color:var(--gold)}
+.login-btn{width:100%;padding:.9rem;background:var(--gold);color:var(--white);border:none;border-radius:3px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;cursor:pointer;transition:background .2s;margin-top:.5rem}
+.login-btn:hover{background:#9e7a38}
+.login-error{background:var(--red-bg);border:1px solid var(--red-b);border-radius:3px;padding:.7rem .9rem;font-size:.82rem;color:var(--red);margin-top:.8rem;display:none}
+.login-footer{margin-top:1.5rem;font-size:.75rem;color:var(--muted);text-align:center;line-height:1.6}
+.login-footer a{color:var(--gold);text-decoration:none}
+
+/* ── PORTAL ── */
+.portal-page{display:none;min-height:100vh;flex-direction:column}
+.portal-header{background:var(--ink);padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+.portal-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--white)}
+.portal-logo span{color:var(--gold)}
+.portal-logo-sub{font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);display:block}
+.logout-btn{padding:.35rem .85rem;border:1.5px solid rgba(255,255,255,.2);border-radius:2px;background:transparent;color:rgba(255,255,255,.6);font-family:'DM Sans',sans-serif;font-size:.73rem;cursor:pointer}
+.logout-btn:hover{background:rgba(255,255,255,.08)}
+.portal-body{flex:1;padding:1.5rem;max-width:760px;margin:0 auto;width:100%}
+
+/* BIENVENIDA */
+.welcome-card{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:1.5rem;margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.welcome-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600}
+.welcome-sub{font-size:.83rem;color:var(--muted);margin-top:.2rem}
+.case-badge{font-size:.75rem;font-weight:600;padding:.35rem .85rem;border-radius:20px}
+
+/* SECCIÓN */
+.section{background:var(--white);border:1px solid var(--border);border-radius:6px;margin-bottom:1.2rem;overflow:hidden}
+.section-hd{padding:1rem 1.3rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.6rem}
+.section-icon{font-size:1.1rem}
+.section-title{font-size:.85rem;font-weight:600;letter-spacing:.03em}
+.section-body{padding:1.1rem 1.3rem}
+
+/* ETAPA ACTUAL */
+.stage-current{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;background:var(--cream);border-radius:4px;border-left:4px solid var(--gold)}
+.stage-dot-big{width:14px;height:14px;border-radius:50%;flex-shrink:0}
+.stage-label{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.stage-desc{font-size:.8rem;color:var(--muted);margin-top:.15rem}
+
+/* TIMELINE PROCESO */
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-step{display:flex;gap:1rem;position:relative}
+.tl-step:not(:last-child)::before{content:'';position:absolute;left:15px;top:28px;bottom:-8px;width:2px;background:var(--border)}
+.tl-step.done::before{background:var(--green)}
+.tl-step.cur::before{background:var(--gold)}
+.tl-marker{width:32px;height:32px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;border:2px solid var(--border);background:var(--cream);color:var(--muted);position:relative;z-index:1}
+.tl-step.done .tl-marker{background:var(--green);border-color:var(--green);color:#fff}
+.tl-step.cur .tl-marker{background:var(--gold);border-color:var(--gold);color:#fff}
+.tl-content{padding:.4rem 0 1.2rem}
+.tl-text{font-size:.85rem;font-weight:500;color:var(--ink)}
+.tl-step.pending .tl-text{color:var(--muted)}
+.tl-date{font-size:.72rem;color:var(--muted);margin-top:.15rem}
+.tl-nota{font-size:.75rem;color:var(--muted);font-style:italic;margin-top:.2rem;background:var(--cream);padding:.3rem .6rem;border-radius:3px;border-left:2px solid var(--gold)}
+
+/* HONORARIOS */
+.honor-bar-wrap{margin-bottom:1rem}
+.honor-bar-label{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin-bottom:.4rem}
+.honor-bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden}
+.honor-bar-fill{height:100%;border-radius:4px;transition:width .5s}
+.honor-boxes{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.7rem;margin-top:.8rem}
+.honor-box{border-radius:4px;padding:.85rem;text-align:center;border:1px solid var(--border)}
+.honor-box-n{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600}
+.honor-box-l{font-size:.65rem;margin-top:.1rem}
+
+/* HISTORIAL ACTUACIONES */
+.actuaciones{display:flex;flex-direction:column;gap:.6rem}
+.act-item{display:flex;gap:.85rem;align-items:flex-start;padding:.75rem .9rem;border-radius:4px;border:1px solid var(--border);background:var(--cream)}
+.act-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:4px}
+.act-text{font-size:.83rem;color:var(--ink);font-weight:500;line-height:1.4}
+.act-date{font-size:.7rem;color:var(--muted);margin-top:.15rem}
+.act-empty{font-size:.82rem;color:var(--muted);text-align:center;padding:1rem}
+
+/* CONTACTO */
+.contact-row{display:flex;align-items:center;gap:.75rem;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.83rem}
+.contact-row:last-child{border-bottom:none}
+.contact-icon{font-size:1rem;flex-shrink:0;width:24px;text-align:center}
+.contact-label{color:var(--muted);width:80px;flex-shrink:0}
+.contact-val{font-weight:500}
+.contact-val a{color:var(--gold);text-decoration:none}
+
+/* NOTA IMPORTANTE */
+.nota-box{background:var(--navy);border-radius:6px;padding:1.2rem 1.4rem;margin-bottom:1.2rem;color:rgba(255,255,255,.8);font-size:.82rem;line-height:1.7}
+.nota-box strong{color:var(--gold-l);display:block;margin-bottom:.3rem;font-size:.88rem}
+
+/* RESPONSIVE */
+@media(max-width:500px){
+  .honor-boxes{grid-template-columns:1fr 1fr}
+  .welcome-card{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login-page" id="loginPage">
+  <div class="login-logo">CC Juristas <span>&</span> Asociados</div>
+  <div class="login-sub">Portal de seguimiento · Abogada Carol Castaño</div>
+  <div class="login-card">
+    <div class="login-title">Consulta tu proceso</div>
+    <div class="login-desc">Ingresa tu número de cédula y el PIN que te envió la abogada para ver el estado actualizado de tu caso.</div>
+    <div class="form-group">
+      <label>Número de cédula</label>
+      <input type="text" id="cedula-in" placeholder="Ej: 1234567890" inputmode="numeric"/>
+    </div>
+    <div class="form-group">
+      <label>PIN de acceso</label>
+      <input type="text" id="pin-in" placeholder="Ej: A3K9TZ" style="text-transform:uppercase" maxlength="8"/>
+    </div>
+    <button class="login-btn" onclick="doLogin()">Ver mi proceso →</button>
+    <div class="login-error" id="loginError">❌ Cédula o PIN incorrecto. Verifica los datos o contacta a la abogada.</div>
+    <div class="login-footer">
+      ¿No tienes tu PIN? <a href="https://wa.me/573001350609">Escríbele a la abogada</a><br>
+      +57 300 135 0609 · carol.castano@ccjuristasyasociados.com
+    </div>
+  </div>
+</div>
+
+<!-- PORTAL -->
+<div class="portal-page" id="portalPage">
+  <div class="portal-header">
+    <div>
+      <div class="portal-logo">CC Juristas <span>&</span> Asociados</div>
+      <span class="portal-logo-sub">Portal del cliente · Seguimiento de proceso</span>
+    </div>
+    <button class="logout-btn" onclick="doLogout()">Cerrar sesión</button>
+  </div>
+
+  <div class="portal-body">
+
+    <!-- BIENVENIDA -->
+    <div class="welcome-card">
+      <div>
+        <div class="welcome-name" id="p-nombre">—</div>
+        <div class="welcome-sub" id="p-servicio">—</div>
+      </div>
+      <div id="p-stage-badge"></div>
+    </div>
+
+    <!-- NOTA -->
+    <div class="nota-box">
+      <strong>📋 Información de tu caso</strong>
+      Este portal se actualiza cada vez que la abogada registra una actuación en tu proceso. Si tienes dudas sobre algún punto, contáctala directamente por WhatsApp.
+    </div>
+
+    <!-- ETAPA ACTUAL -->
+    <div class="section">
+      <div class="section-hd">
+        <span class="section-icon">📍</span>
+        <div class="section-title">Etapa actual del proceso</div>
+      </div>
+      <div class="section-body">
+        <div class="stage-current" id="p-stage-current">
+          <div class="stage-dot-big" id="p-stage-dot"></div>
+          <div>
+            <div class="stage-label" id="p-stage-label">—</div>
+            <div class="stage-desc" id="p-stage-desc">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROCESO JUDICIAL -->
+    <div class="section" id="p-proceso-section">
+      <div class="section-hd">
+        <span class="section-icon">⚖️</span>
+        <div class="section-title">Actuaciones del proceso</div>
+      </div>
+      <div class="section-body">
+        <div class="timeline" id="p-timeline"></div>
+      </div>
+    </div>
+
+    <!-- HISTORIAL / ACTUALIZACIONES -->
+    <div class="section">
+      <div class="section-hd">
+        <span class="section-icon">📝</span>
+        <div class="section-title">Historial de actualizaciones</div>
+      </div>
+      <div class="section-body">
+        <div class="actuaciones" id="p-historial"></div>
+      </div>
+    </div>
+
+    <!-- HONORARIOS -->
+    <div class="section" id="p-honor-section">
+      <div class="section-hd">
+        <span class="section-icon">💰</span>
+        <div class="section-title">Estado de honorarios</div>
+      </div>
+      <div class="section-body">
+        <div class="honor-bar-wrap">
+          <div class="honor-bar-label">
+            <span>Progreso de pago</span>
+            <span id="p-honor-pct">0%</span>
+          </div>
+          <div class="honor-bar"><div class="honor-bar-fill" id="p-honor-bar" style="width:0%;background:var(--gold)"></div></div>
+        </div>
+        <div class="honor-boxes" id="p-honor-boxes"></div>
+      </div>
+    </div>
+
+    <!-- CONTACTO -->
+    <div class="section">
+      <div class="section-hd">
+        <span class="section-icon">📞</span>
+        <div class="section-title">Contacto directo</div>
+      </div>
+      <div class="section-body">
+        <div class="contact-row">
+          <span class="contact-icon">💬</span>
+          <span class="contact-label">WhatsApp</span>
+          <span class="contact-val"><a href="https://wa.me/573001350609" target="_blank">+57 300 135 0609</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">📧</span>
+          <span class="contact-label">Correo</span>
+          <span class="contact-val"><a href="mailto:carol.castano@ccjuristasyasociados.com">carol.castano@ccjuristasyasociados.com</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">📱</span>
+          <span class="contact-label">USA</span>
+          <span class="contact-val"><a href="tel:+13465418165">+1 346-541-8165</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">🌐</span>
+          <span class="contact-label">Web</span>
+          <span class="contact-val"><a href="https://ccjuristasyasociados.netlify.app" target="_blank">ccjuristasyasociados.netlify.app</a></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const STAGES_DERECHO={
+  captado:   {label:'Captado',      desc:'Tu caso ha sido registrado. Próximo paso: consulta inicial.',color:'#2d9e6b',bg:'#f0faf5'},
+  consulta:  {label:'En consulta',  desc:'La consulta inicial está programada o en curso.',color:'#b45309',bg:'#fffbeb'},
+  diagnostico:{label:'Diagnóstico', desc:'Tu caso está siendo analizado. Se está preparando la estrategia legal.',color:'#1d4ed8',bg:'#eff6ff'},
+  proceso:   {label:'En proceso',   desc:'Tu proceso está activo. Se están realizando las actuaciones correspondientes.',color:'#7c3aed',bg:'#faf5ff'},
+  cerrado:   {label:'Cerrado',      desc:'Tu proceso ha finalizado. Consulta con la abogada los detalles.',color:'#15803d',bg:'#f0fdf4'},
+  perdido:   {label:'No continuó',  desc:'El proceso no continuó. Contáctanos si tienes preguntas.',color:'#be123c',bg:'#fff1f2'},
+};
+const STAGES_INT={
+  prospecto:  {label:'Prospecto',    desc:'Tu consulta ha sido registrada.',color:'#0369a1',bg:'#f0f9ff'},
+  evaluacion: {label:'En evaluación',desc:'Tu producto está siendo evaluado para el mercado USA.',color:'#b45309',bg:'#fffbeb'},
+  tramites:   {label:'Trámites USA', desc:'Se están gestionando los permisos y documentación.',color:'#7c3aed',bg:'#faf5ff'},
+  negociacion:{label:'Negociación',  desc:'Estamos negociando con distribuidores y retailers.',color:'#c2410c',bg:'#fff7ed'},
+  mercado:    {label:'En mercado 🎉',desc:'¡Tu producto ya está en el mercado estadounidense!',color:'#15803d',bg:'#f0fdf4'},
+  completado: {label:'Completado ✓', desc:'El proceso ha finalizado exitosamente.',color:'#15803d',bg:'#f0fdf4'},
+};
+
+const fmt=n=>'$'+Math.round(Number(n||0)).toLocaleString('es-CO');
+
+function getClients(){
+  return JSON.parse(localStorage.getItem('ccj_crm_v4')||'[]');
+}
+
+function doLogin(){
+  const cedula=document.getElementById('cedula-in').value.trim();
+  const pin=document.getElementById('pin-in').value.trim().toUpperCase();
+  const err=document.getElementById('loginError');
+  if(!cedula||!pin){err.style.display='block';err.textContent='⚠️ Completa los dos campos.';return}
+  const clients=getClients();
+  const client=clients.find(c=>c.cedula===cedula&&c.pin===pin);
+  if(!client){err.style.display='block';err.textContent='❌ Cédula o PIN incorrecto. Verifica o contacta a la abogada.';return}
+  err.style.display='none';
+  showPortal(client);
+}
+
+document.getElementById('pin-in').addEventListener('input',function(){this.value=this.value.toUpperCase()});
+document.getElementById('cedula-in').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('pin-in').focus()});
+document.getElementById('pin-in').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin()});
+
+function showPortal(c){
+  document.getElementById('loginPage').style.display='none';
+  const pp=document.getElementById('portalPage');pp.style.display='flex';
+
+  const stages=c.tab==='internacional'?STAGES_INT:STAGES_DERECHO;
+  const s=stages[c.etapa]||{label:c.etapa,desc:'',color:'#b8924a',bg:'#faf7f2'};
+
+  document.getElementById('p-nombre').textContent='Hola, '+c.nombre.split(' ')[0]+(c.nombre.split(' ')[1]?' '+c.nombre.split(' ')[1]:'');
+  document.getElementById('p-servicio').textContent=(c.servicio||'')+(c.fecha?' · Captado: '+c.fecha:'');
+
+  document.getElementById('p-stage-badge').innerHTML='<span style="font-size:.78rem;font-weight:600;padding:.4rem 1rem;border-radius:20px;background:'+s.bg+';color:'+s.color+'">'+s.label+'</span>';
+  document.getElementById('p-stage-dot').style.background=s.color;
+  document.getElementById('p-stage-label').textContent=s.label;
+  document.getElementById('p-stage-desc').textContent=s.desc;
+
+  // Timeline proceso judicial
+  const ps=c.procesoStages||[];
+  const tlEl=document.getElementById('p-timeline');
+  if(ps.length){
+    tlEl.innerHTML=ps.map(st=>'<div class="tl-step '+(st.status==='done'?'done':st.status==='cur'?'cur':'pending')+'">'+
+      '<div class="tl-marker">'+(st.status==='done'?'✓':st.status==='cur'?'▶':'')+'</div>'+
+      '<div class="tl-content">'+
+      '<div class="tl-text">'+st.text+'</div>'+
+      (st.date?'<div class="tl-date">📅 '+st.date+'</div>':'')+
+      (st.nota?'<div class="tl-nota">'+st.nota+'</div>':'')+
+      '</div></div>'
+    ).join('');
+  } else {
+    document.getElementById('p-proceso-section').style.display='none';
+  }
+
+  // Historial
+  const tl=c.timeline||[];
+  const hEl=document.getElementById('p-historial');
+  hEl.innerHTML=tl.length?tl.map(e=>'<div class="act-item"><div class="act-dot"></div><div><div class="act-text">'+e.text+'</div><div class="act-date">'+e.date+'</div></div></div>').join(''):'<div class="act-empty">Sin actualizaciones registradas aún.</div>';
+
+  // Honorarios
+  const hs=c.honorarios||[];
+  const total=Number(c.totalHonorarios||0);
+  const paid=hs.filter(h=>h.status==='paid').reduce((a,h)=>a+Number(h.amount||0),0);
+  const partial=hs.filter(h=>h.status==='partial').reduce((a,h)=>a+Number(h.amount||0),0);
+  const totalPagado=paid+partial;
+  const pending=Math.max(0,total-totalPagado);
+  const pct=total>0?Math.min(100,Math.round(totalPagado/total*100)):0;
+  const progColor=pct===100?'#16a34a':pct>60?'#b45309':'#b8924a';
+  if(total>0){
+    document.getElementById('p-honor-pct').textContent=pct+'%';
+    document.getElementById('p-honor-bar').style.width=pct+'%';
+    document.getElementById('p-honor-bar').style.background=progColor;
+    document.getElementById('p-honor-boxes').innerHTML=
+      '<div class="honor-box" style="background:var(--cream)"><div class="honor-box-n">'+fmt(total)+'</div><div class="honor-box-l" style="color:var(--muted)">Total acordado</div></div>'+
+      '<div class="honor-box" style="background:var(--green-bg)"><div class="honor-box-n" style="color:var(--green)">'+fmt(totalPagado)+'</div><div class="honor-box-l" style="color:var(--green)">✓ Pagado</div></div>'+
+      '<div class="honor-box" style="background:'+(pending>0?'var(--red-bg)':'var(--green-bg)')+'"><div class="honor-box-n" style="color:'+(pending>0?'var(--red)':'var(--green)')+'">'+fmt(pending)+'</div><div class="honor-box-l" style="color:'+(pending>0?'var(--red)':'var(--green)')+'">'+( pending>0?'Pendiente':'✓ Al día')+'</div></div>';
+  } else {
+    document.getElementById('p-honor-section').style.display='none';
+  }
+}
+
+function doLogout(){
+  document.getElementById('portalPage').style.display='none';
+  document.getElementById('loginPage').style.display='flex';
+  document.getElementById('cedula-in').value='';
+  document.getElementById('pin-in').value='';
+}
+</script>
+</body>
+</html>
